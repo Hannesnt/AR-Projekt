@@ -1,7 +1,12 @@
-<!-- import aframe and then ar.js with image tracking / location based features -->
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-<script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
   rel="stylesheet"
@@ -14,62 +19,33 @@
   crossorigin="anonymous"
 ></script>
 <link rel="stylesheet" href="/index.css" />
-
-  <head>
-    <title>VS</title>
-  </head>
-  <body style="margin: 0px; overflow: hidden">
-    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
-
-    <div class="arjs-loader d-flex justify-content-center flex-column">
-      <img
-        class="loading-logo"
-        src="/assets/images/vs-production_logo-neg.png"
-      />
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-
-    <!-- a-frame scene -->
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+  <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
 
 
-  <a-scene
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-    embedded
-    renderer="logarithmicDepthBuffer: true;"
-    vr-mode-ui="enabled: false"
-    gesture-detector
-    id="scene"
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+
+  <a-assets>
+      <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf"></a-asset-item>
+      <a-asset-item id="car-asset" src="models/carModel/scene.gltf"></a-asset-item>
+      <a-asset-item id="lift-asset" src="models/liftBtnModel/scene.gltf"></a-asset-item>
+      <a-asset-item id="panel-asset" src="models/panelModel/scene.gltf"></a-asset-item>
+  </a-assets>
+
+
+  <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
+    <a-entity
+    gltf-model="#car-asset"
+    scale="1 1 1"
+    rotation="90 180 0"
   >
-    <!-- a-nft is the anchor that defines an Image Tracking entity -->
-    <!-- on 'url' use the path to the Image Descriptors created before. -->
-    <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
-    <a-nft
-      type="nft"
-      url="marker/qr-codeBlue"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-      <a-entity
-        gltf-model="models/panel/scene.gltf"
-        scale="10 10 10"
-        position="50 100 0"
-        class="clickable"
-      ></a-entity>
+  </a-marker>
 
+  <a-entity camera></a-entity>
 
-      <!-- static camera that moves according to the device movemenents -->
-      <a-entity camera></a-entity>
-    </a-scene>
-
-    <div class="container footer-container">
+  </a-scene>
+  <div class="container footer-container">
       <div class="footer">
         <img
           class="footer-image-left"
@@ -83,15 +59,9 @@
         </div> 
       </div>
     </div>
-    
-  </body>
+</body>
+</html>
 
-
-
-
-  </div>
-
-  <script src="./switchModel.js"></script>
 
 
 
