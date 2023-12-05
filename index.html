@@ -2,45 +2,45 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
-<style>
-  .arjs-loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .arjs-loader div {
-    text-align: center;
-    font-size: 1.25em;
-    color: white;
-  }
-  
-</style>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+  crossorigin="anonymous"
+></script>
+<link rel="stylesheet" href="/index.css" />
 <head>
   <title>My Page Title</title>
-  <link rel="icon" type="image/x-icon" href="/models/soffa.jpg">
 </head>
-<body style="margin : 0px; overflow: hidden;">
+<body style="margin: 0px; overflow: hidden">
   <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+  <div class="container header-container">
+    <div class="header">
+      <img
+        class="header-image-left"
+        src="/assets/images/elevator-button.jpeg"
+      />
+      <p>En till bild</p>
+    </div>
+  </div>
   <div class="arjs-loader">
     <div>Loading, please wait hallå...</div>
   </div>
 
   <!-- a-frame scene -->
+
   <a-scene
-  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-  embedded
-  renderer="logarithmicDepthBuffer: true;"
-  vr-mode-ui="enabled: false"
-  gesture-detector
-  id="scene"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    embedded
+    renderer="logarithmicDepthBuffer: true;"
+    vr-mode-ui="enabled: false"
+    gesture-detector
+    id="scene"
   >
     <!-- a-nft is the anchor that defines an Image Tracking entity -->
     <!-- on 'url' use the path to the Image Descriptors created before. -->
@@ -59,16 +59,12 @@
       <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
 
       <a-entity
-      gltf-model="models/scene.gltf"
-      scale="5 5 5"
-      position="50 150 0"
-      class="clickable"
-      gesture-handler="minScale: 0.25; maxScale: 10"
-    >
- 
-    >
+        gltf-model="models/panel/scene.gltf"
+        scale="10 10 10"
+        position="50 100 0"
+        class="clickable"
+      >
     </a-nft>
-
 
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>

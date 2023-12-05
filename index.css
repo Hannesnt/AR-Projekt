@@ -1,0 +1,46 @@
+.arjs-loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arjs-loader div {
+  text-align: center;
+  font-size: 1.25em;
+  color: white;
+}
+
+.header-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+}
+
+.header {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(51, 51, 51, 0.8); /* Adjust the opacity here */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  z-index: 99;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.header-image-left {
+  height: 10vh;
+  width: 15vh;
+}
