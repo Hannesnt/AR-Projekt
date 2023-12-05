@@ -1,3 +1,7 @@
+* {
+  overflow: hidden;
+}
+
 .arjs-loader {
   height: 100%;
   width: 100%;
@@ -17,14 +21,56 @@
   color: white;
 }
 
-.header-container {
+.loading-logo {
+  height: 10vh;
+  width: 30vh;
+  margin-bottom: 5vh;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.footer-container {
   overflow: hidden;
   display: flex;
   justify-content: center;
   height: 20vh;
 }
 
-.header {
+.footer {
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -40,7 +86,30 @@
   justify-content: space-evenly;
 }
 
-.header-image-left {
+.footer-image-left {
   height: 10vh;
   width: 15vh;
 }
+
+/* .buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.switchButtons {
+  padding: 0.25em;
+  border-radius: 4px;
+  border: none;
+  background: white;
+  color: black;
+  width: 4em;
+  height: 2em;
+  margin: 0 5px;
+} */
