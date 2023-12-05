@@ -1,7 +1,7 @@
 <!-- import aframe and then ar.js with image tracking / location based features -->
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-
+<script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
 <style>
   .arjs-loader {
     height: 100%;
@@ -35,10 +35,12 @@
 
   <!-- a-frame scene -->
   <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+  embedded
+  renderer="logarithmicDepthBuffer: true;"
+  vr-mode-ui="enabled: false"
+  gesture-detector
+  id="scene"
   >
     <!-- a-nft is the anchor that defines an Image Tracking entity -->
     <!-- on 'url' use the path to the Image Descriptors created before. -->
@@ -50,18 +52,24 @@
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="5"
+      raycaster="objects: .clickable"
+      emitevents="true"
+      cursor="fuse: false; rayOrigin: mouse;"
     >
       <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
 
       <a-entity
       gltf-model="models/scene.gltf"
-      scale="15 15 15"
+      scale="5 5 5"
       position="50 150 0"
-      rotation="45 90 180"
+      class="clickable"
+      gesture-handler="minScale: 0.25; maxScale: 10"
     >
  
     >
     </a-nft>
+
+
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
   </a-scene>
