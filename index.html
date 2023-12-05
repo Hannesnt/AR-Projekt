@@ -14,8 +14,6 @@
   crossorigin="anonymous"
 ></script>
 <link rel="stylesheet" href="/index.css" />
-<head>
-  <title>My Page Title</title>
 
   <head>
     <title>VS</title>
@@ -38,36 +36,34 @@
 
     <!-- a-frame scene -->
 
-    <a-scene
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-      embedded
-      renderer="logarithmicDepthBuffer: true;"
-      vr-mode-ui="enabled: false"
-      gesture-detector
-      id="scene"
+
+  <a-scene
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    embedded
+    renderer="logarithmicDepthBuffer: true;"
+    vr-mode-ui="enabled: false"
+    gesture-detector
+    id="scene"
+  >
+    <!-- a-nft is the anchor that defines an Image Tracking entity -->
+    <!-- on 'url' use the path to the Image Descriptors created before. -->
+    <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
+    <a-nft
+      type="nft"
+      url="marker/qr-codeBlue"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
     >
-      <!-- a-nft is the anchor that defines an Image Tracking entity -->
-      <!-- on 'url' use the path to the Image Descriptors created before. -->
-      <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
-      <a-nft
-        type="nft"
-        url="marker/qr-codeBlue"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance=".01"
-        smoothThreshold="5"
-        raycaster="objects: .clickable"
-        emitevents="true"
-        cursor="fuse: false; rayOrigin: mouse;"
-      >
-        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <a-entity
-          gltf-model="models/liftBtnModel/scene.gltf"
-          scale="10 10 10"
-          position="50 150 -100"
-          class="clickable"
-        ></a-entity>
-      </a-nft>
+      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+      <a-entity
+        gltf-model="models/panel/scene.gltf"
+        scale="10 10 10"
+        position="50 100 0"
+        class="clickable"
+      ></a-entity>
+
 
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
@@ -84,35 +80,18 @@
     </div>
   </body>
 
-  <!-- <div class="buttons">
+  <div class="buttons">
     <button  class="switchButtons" >Panel</button>
     <button  class="switchButtons" >Lift</button>
     <button  class="switchButtons" >Car</button>
-  </div> -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const modelArray = [
-        "models/panelModel/scene.gltf",
-        "models/liftBtnModel/scene.gltf",
-        "models/carModel/scene.gltf",
-      ];
-      const models = document.querySelector(".Model");
-      for (let i = 0; i < models.length; i++) {
-        models[i].setAttribute("visible", false);
-      }
 
-      function switchModel(model) {
-        models.removeAttribute("gltf-model");
+  </div> 
 
-        models.setAttribute("gltf-model", model);
-      }
 
-      const buttons = document.querySelectorAll(".switchButtons");
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function () {
-          switchModel(modelArray[i]);
-        });
-      }
-    });
-  </script>
-</head>
+  </div>
+
+  <script src="./switchModel.js"></script>
+
+
+
+
