@@ -36,8 +36,7 @@
   <a-assets>
       <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf"></a-asset-item>
       <a-asset-item id="car-asset" src="models/carModel/scene.gltf"></a-asset-item>
-      <a-asset-item id="lift-asset" src="models/liftBtnModel/scene.gltf"></a-asset-item>
-      <a-asset-item id="panel-asset" src="models/panelModel/scene.gltf"></a-asset-item>
+      <a-asset-item id="lift-asset" src="models/liftBtnModelGold/scene.gltf"></a-asset-item>
       <a-asset-item id="defaultpanel-asset" src="models/DefaultPanel/scene.gltf"></a-asset-item>
       <a-asset-item id="goldenpanel-asset" src="models/GoldenPanel/scene.gltf"></a-asset-item>
       <a-asset-item id="copperpanel-asset" src="models/CopperPanel/scene.gltf"></a-asset-item>
@@ -46,9 +45,9 @@
 
   <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
     <a-entity
-    gltf-model="#copperpanel-asset"
-    scale="0.3 0.3 0.3"
-    rotation="90 180 0"
+    gltf-model="#lift-asset"
+    scale="0.1 0.1 0.1"
+    rotation="-45 70 -58"
     gesture-handler="minScale: 0.5; maxScale: 2"
   >
   </a-marker>
@@ -61,19 +60,19 @@
         <div class="imageholder">
         <img
           class="footer-image"
-          src="/images/defaultTestMindre.png"
+          src="/images/default-transformed.png"
         />
         </div>
         <div class="imageholder">
                 <img
           class="footer-image"
-          src="/images/goldenpanel.png"
+          src="/images/goldenpanel-transformed.png"
         />
         </div>
         <div class="imageholder">
                         <img
           class="footer-image"
-          src="/images/copperpanel.png"
+          src="/images/copperpanel-transformed.png"
         />
         </div>
         <div class="buttons">
