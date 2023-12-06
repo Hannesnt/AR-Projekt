@@ -1,6 +1,7 @@
+
+const models = document.querySelector('.Model');
 document.addEventListener('DOMContentLoaded', function () {
     const modelArray = ["models/panelModel/scene.gltf", "models/liftBtnModel/scene.gltf", "models/carModel/scene.gltf"]
-    const models = document.querySelector('.Model');
     for (let i = 0; i < models.length; i++) {
       models[i].setAttribute('visible', false);
     }
@@ -20,3 +21,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }));
     }
   });
+
+  /*if(models.getAttribute('gltf-model') === "#defaultpanel-asset"){
+    const btnDiv = document.querySelector('.buttons');
+    for(let i = 0; i < 2; i++){
+      let test = document.createElement("button");
+      test.setAttribute('class', 'switchButtons');
+      test.textContent = "test value";
+      btnDiv.appendChild(test);
+    }
+   
+  }*/

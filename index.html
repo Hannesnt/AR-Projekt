@@ -28,7 +28,6 @@
   <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' gesture-detector>
 
   <a-assets>
-      <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf"></a-asset-item>
       <a-asset-item id="car-asset" src="models/carModel/scene.gltf"></a-asset-item>
       <a-asset-item id="lift-asset" src="models/liftBtnModel/scene.gltf"></a-asset-item>
       <a-asset-item id="panel-asset" src="models/panelModel/scene.gltf"></a-asset-item>
@@ -40,10 +39,11 @@
 
   <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
     <a-entity
-    gltf-model="#copperpanel-asset"
+    gltf-model="#defaultpanel-asset"
     scale="0.3 0.3 0.3"
     rotation="90 180 0"
     gesture-handler="minScale: 0.5; maxScale: 2"
+    class="Model"
   >
   </a-marker>
 
@@ -60,10 +60,10 @@
           <button  class="switchButtons" >Panel</button>
           <button  class="switchButtons" >Lift</button>
           <button  class="switchButtons" >Car</button>
-      
         </div> 
       </div>
     </div>
+  <script src="/switchModel.js"></script>
 </body>
 </html>
 
