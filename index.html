@@ -25,9 +25,9 @@
   <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
 
 
-  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' gesture-detector>
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' gesture-detector renderer=" highRefreshRate: true; logarithmicDepthBuffer: true;">
 
-  <a-assets>
+  <a-assets class="asset0">
       <a-asset-item id="car-asset" src="models/carModel/scene.gltf"></a-asset-item>
       <a-asset-item id="lift-asset" src="models/liftBtnModel/scene.gltf"></a-asset-item>
       <a-asset-item id="panel-asset" src="models/panelModel/scene.gltf"></a-asset-item>
@@ -36,12 +36,11 @@
       <a-asset-item id="copperpanel-asset" src="models/CopperPanel/scene.gltf"></a-asset-item>
   </a-assets>
 
-
   <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
     <a-entity
     gltf-model="#defaultpanel-asset"
     scale="0.3 0.3 0.3"
-    rotation="90 180 0"
+    rotation="90 360 0"
     gesture-handler="minScale: 0.5; maxScale: 2"
     class="Model"
   >
@@ -52,22 +51,8 @@
   </a-scene>
   <div class="container footer-container">
       <div class="footer">
-        <img
-          class="footer-image"
-          src="/images/defaultpanel.png"
-        />
-                <img
-          class="footer-image"
-          src="/images/goldenpanel.png"
-        />
-                        <img
-          class="footer-image"
-          src="/images/copperpanel.png"
-        />
         <div class="buttons">
-          <button  class="switchButtons" >Panel</button>
-          <button  class="switchButtons" >Lift</button>
-          <button  class="switchButtons" >Car</button>
+          <button  class="menuBtn" >Menu</button>
         </div> 
       </div>
     </div>
