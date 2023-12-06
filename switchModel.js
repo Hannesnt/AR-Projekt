@@ -1,16 +1,19 @@
 const models = document.querySelector('.Model');
-const modelNameArray = ["Snygg panel", "Lite tråkigare panel"]
+
+//Arrays
+const modelNameArray = ["Snygg modell", "Lite tråkigare modell"]
 const modelArray = ["#defaultpanel-asset", "#panel-asset"]
 const colorArray = [
-  ["#defaultpanel-asset", "#goldenpanel-asset", "#copperpanel-asset"]
+  ["#defaultpanel-asset", "#goldenpanel-asset", "#copperpanel-asset"],
+  ["#liftBtnModel-asset", "#liftBtnModelCopper-asset", "#liftBtnModelGold-asset"]
 ]
 const imgArray = [
   ['/images/defaultpanel.png','/images/goldenpanel.png', '/images/copperpanel.png'],
-  ['./images/redDummy.png', '/images/blueDummy.png']
-
+  ['./images/defaultLiftbtn-transformed.png', '/images/copperLiftBtn-transformed.png', '/images/goldbtnmodell-transformed.png']
 ]
 
-const asset0 = document.querySelector('.asset0');
+
+//Functions
 
 function switchModel(model) {
   models.removeAttribute('gltf-model')
@@ -20,7 +23,7 @@ function switchModel(model) {
 }
 
 function showModelColors(asset){
-  document.querySelector('.menuBtn').style.display = "inline";
+  document.querySelector('.buttons').style.display = "inline";
   const modelBtns = document.querySelectorAll(".modelBtn");
   for(let i = 0; i < modelBtns.length; i++){
     modelBtns[i].remove();
@@ -38,6 +41,30 @@ function showModelColors(asset){
   }
 }
 
+function openModelMenu(){
+  document.querySelector('.buttons').style.display = "none";
+  const removeElements = document.querySelectorAll('.footer-image');
+  for(let i = 0; i < removeElements.length; i++){
+    removeElements[i].remove();
+  }
+
+    
+  for(let i = 0; i < modelArray.length; i++){
+      let buttonDiv = document.querySelector('.footer');
+      let newModelBtn = document.createElement('button');
+      newModelBtn.setAttribute("class", `modelBtn Btn${i}`);
+      newModelBtn.textContent = modelNameArray[i];
+      buttonDiv.appendChild(newModelBtn);
+      newModelBtn.addEventListener('click', (function () {
+        switchModel(modelArray[i]);
+        showModelColors(i);
+    }));
+    }
+  }
+
+
+
+//Listeners
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.footer-image');
     for (let i = 0; i < buttons.length; i++) {
@@ -47,30 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  function openModelMenu(){
-    document.querySelector('.menuBtn').style.display = "none";
-    const removeElements = document.querySelectorAll('.footer-image');
-    for(let i = 0; i < removeElements.length; i++){
-      removeElements[i].remove();
-    }
-  
-      
-    for(let i = 0; i < modelArray.length; i++){
-        let buttonDiv = document.querySelector('.footer');
-        let newModelBtn = document.createElement('button');
-        newModelBtn.setAttribute("class", `modelBtn Btn${i}`);
-        newModelBtn.textContent = modelNameArray[i];
-        buttonDiv.appendChild(newModelBtn);
-        newModelBtn.addEventListener('click', (function () {
-          switchModel(modelArray[i]);
-          showModelColors(i);
-      }));
-      }
-    }
 
-
-
-    const menuBtn = document.querySelector('.menuBtn');
-    menuBtn.addEventListener('click', openModelMenu);
+  const menuBtn = document.querySelector('.menuBtn');
+  menuBtn.addEventListener('click', openModelMenu);
 
 
