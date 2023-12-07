@@ -28,14 +28,14 @@ function switchModel(model) {
   if(colorArray[0].includes(model)){
     models.setAttribute('scale', "0.3 0.3 0.3");
     models.setAttribute('position', "0 0 0");
-    models.setAttribute('rotation', "90 360 0");
+    models.setAttribute('rotation', "90 0 0");
     models.setAttribute('gesture-handler', "minScale: 0.5; maxScale: 2");
   }
   if(colorArray[1].includes(model)){
     models.setAttribute('scale', "0.1 0.1 0.1");
     models.setAttribute('position', "-0.3 -0.3 -0.1");
     models.setAttribute('rotation', "-90 360 0");
-    models.setAttribute('gesture-handler', "minScale: 0.25; maxScale: 0.6");
+    models.setAttribute('gesture-handler', "minScale: 0.25; maxScale: 1");
   }
   if(colorArray[2].includes(model)){
     models.setAttribute('scale', "0.05 0.05 0.05");
