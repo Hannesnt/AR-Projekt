@@ -21,7 +21,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/index.css" />
-
 </head>
 
 
@@ -43,27 +42,42 @@
       <a-asset-item id="liftBtnModel-asset" src="models/LiftPanel/liftBtnModel/scene.gltf"></a-asset-item>
       <a-asset-item id="liftBtnModelCopper-asset" src="models/LiftPanel/liftBtnModelCopper/scene.gltf"></a-asset-item>
       <a-asset-item id="liftBtnModelGold-asset" src="models/LiftPanel/liftBtnModelGold/scene.gltf"></a-asset-item>
+      <a-asset-item id="plate-asset" src="models/Plate/scene.gltf"></a-asset-item>
+      <a-asset-item id="vase-asset" src="models/Vase/Vase.obj.gltf"></a-asset-item>
   </a-assets>
 
   <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
     <a-entity
-    scale="0.3 0.3 0.3"
-    rotation="90 360 0"
     gesture-handler="minScale: 0.25; maxScale: 0.6"
     class="Model"
   />
   </a-marker>
 
+  <a-marker type='barcode' value='6'>
+    <a-entity
+    scale="0.05 0.05 0.05"
+    gltf-model="#plate-asset"
+    class="Model"
+  />
+</a-marker>
+<a-marker type='barcode' value='5'>
+  <a-entity
+  scale="0.001 0.001 0.001"
+  gltf-model="#vase-asset"
+  class="Model"
+/>
+
+</a-marker>
   <a-entity camera></a-entity>
 
   </a-scene>
   <div class="container footer-container">
       <div class="footer">
-        <div class="buttons">
           <button  class="menuBtn">Meny</button>
           <i class="fa fa-chevron-left backBtn"></i>
-        </div> 
+          
       </div>
+      
     </div>
   <script src="./js/switchModel.js"></script>
 </body>

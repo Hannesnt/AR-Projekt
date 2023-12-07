@@ -1,23 +1,29 @@
 const models = document.querySelector('.Model');
 
 //Arrays
-const modelNameArray = ["Snygg modell", "Lite tråkigare modell"]
-const modelArray = ["#defaultpanel-asset", "#liftBtnModel-asset"]
+const modelArray = ["#defaultpanel-asset", "#liftBtnModel-asset", "#plate-asset", "#vase-asset"]
 const colorArray = [
   ["#defaultpanel-asset", "#goldenpanel-asset", "#copperpanel-asset"],
-  ["#liftBtnModel-asset", "#liftBtnModelCopper-asset", "#liftBtnModelGold-asset"]
+  ["#liftBtnModel-asset", "#liftBtnModelCopper-asset", "#liftBtnModelGold-asset"],
+  ["#plate-asset"],
+  ["#vase-asset"]
 ]
 const imgArray = [
   ['/images/defaultpanel.png','/images/goldenpanel.png', '/images/copperpanel.png'],
-  ['./images/defaultLiftbtn-transformed.png', '/images/copperLiftBtn-transformed.png', '/images/goldbtnmodell-transformed.png']
+  ['./images/defaultLiftbtn-transformed.png', '/images/copperLiftBtn-transformed.png', '/images/goldbtnmodell-transformed.png'],
+  ['./images/plateimg.png'],
+  ['./images/vaseimg.png']
 ]
 
 
 //Functions
 
 function switchModel(model) {
-  console.log(model);
   models.removeAttribute('gltf-model')
+  models.removeAttribute('scale');
+  models.removeAttribute('position');
+  models.removeAttribute('rotation');
+  models.removeAttribute('gesture-handler');
   models.setAttribute('gltf-model', model);
   if(colorArray[0].includes(model)){
     models.setAttribute('scale', "0.3 0.3 0.3");
@@ -25,21 +31,30 @@ function switchModel(model) {
     models.setAttribute('rotation', "90 360 0");
     models.setAttribute('gesture-handler', "minScale: 0.5; maxScale: 2");
   }
-  else{
+  if(colorArray[1].includes(model)){
     models.setAttribute('scale', "0.1 0.1 0.1");
     models.setAttribute('position', "-0.3 -0.3 -0.1");
     models.setAttribute('rotation', "-90 360 0");
     models.setAttribute('gesture-handler', "minScale: 0.25; maxScale: 0.6");
   }
+  if(colorArray[2].includes(model)){
+    models.setAttribute('scale', "0.05 0.05 0.05");
+    models.setAttribute('gesture-handler', "minScale: 0.05; maxScale: 0.08");
+  }
+  if(colorArray[3].includes(model)){
+    models.setAttribute('scale', "0.001 0.001 0.001");
+    models.setAttribute('gesture-handler', "minScale: 0.001; maxScale: 0.005");
+  }
 
- 
+
 }
 
 function pickModelColor(asset){
-  document.querySelector('.buttons').style.display = "inline";
-  const modelBtns = document.querySelectorAll(".modelBtn");
-  for(let i = 0; i < modelBtns.length; i++){
-    modelBtns[i].remove();
+  document.querySelector('.menuBtn').style.display = "none";
+  document.querySelector('.backBtn').style.display = "block";
+  const menuImg = document.querySelectorAll(".menuImg");
+  for(let i = 0; i < menuImg.length; i++){
+    menuImg[i].remove();
   }
   for(let i = 0; i < imgArray[asset].length; i++){
     let colorBtn = document.createElement('img');
@@ -50,21 +65,22 @@ function pickModelColor(asset){
     }));
     let footerDiv = document.querySelector('.footer');
     footerDiv.appendChild(colorBtn);
-
+    document.querySelector('.backBtn').addEventListener('click', openModelMenu)
   }
 }
 
 function openModelMenu(){
-  document.querySelector('.buttons').style.display = "none";
+  document.querySelector('.menuBtn').style.display = "none";
+  document.querySelector('.backBtn').style.display = "none";
   const removeElements = document.querySelectorAll('.footer-image');
   for(let i = 0; i < removeElements.length; i++){
     removeElements[i].remove();
   }
   for(let i = 0; i < modelArray.length; i++){
       let buttonDiv = document.querySelector('.footer');
-      let newModelBtn = document.createElement('button');
-      newModelBtn.setAttribute("class", `modelBtn`);
-      newModelBtn.textContent = modelNameArray[i];
+      let newModelBtn = document.createElement('img');
+      newModelBtn.setAttribute("class", `footer-image menuImg`);
+      newModelBtn.setAttribute("src", imgArray[i][0]);
       buttonDiv.appendChild(newModelBtn);
       newModelBtn.addEventListener('click', (function () {
         switchModel(modelArray[i]);
@@ -82,8 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const loadingImage = document.getElementById("loading-image");
   setTimeout(function () {
     loadingOverlay.style.display = "none";
-    loadingSpinner.style.display = "none";
-    loadingImage.style.display = "none";
   }, 3000);
 
   const buttons = document.querySelectorAll('.footer-image');
