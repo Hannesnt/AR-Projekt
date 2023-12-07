@@ -1,6 +1,6 @@
-* {
+/* * {
   overflow: hidden;
-}
+} */
 
 .loading-overlay {
   position: fixed;
@@ -85,7 +85,7 @@
 }
 
 .footer {
-  overflow: hidden;
+  overflow: scroll;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -97,13 +97,13 @@
   height: 20vh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
 }
 
 .footer-image {
   height: 10vh;
   width: 7vw;
   border-radius: 10px;
+  margin: 0 0 0 10vw;
 }
 
 .menuBtn {
@@ -125,5 +125,3 @@
   padding: 15px;
   display: none;
 }
-
-
