@@ -32,8 +32,8 @@
       <img
         class="loading-logo"
         id="loading-logo"
-        src="/images/vs-production_logo-neg-transparent.png"
-        alt=""
+        src="/images/logo.png"
+        alt="VS-Logo"
       />
       <div class="lds-ring" id="loading-spinner">
         <div></div>
@@ -42,14 +42,14 @@
         <div></div>
       </div>
     </div>
-
     <a-scene
+      vr-mode-ui="enabled: false;"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
       gesture-detector
       renderer=" highRefreshRate: true; logarithmicDepthBuffer: true;"
     >
-      <a-assets class="asset">
+      <a-assets class="panelAssets">
         <a-asset-item
           id="defaultpanel-asset"
           src="models/ElevatorPanel/DefaultPanel/scene.gltf"
@@ -75,44 +75,27 @@
           src="models/LiftPanel/liftBtnModelGold/scene.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="plate-asset"
-          src="models/Plate/scene.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="vase-asset"
-          src="models/Vase/Vase.obj.gltf"
-        ></a-asset-item>
-        <a-asset-item
-        id="airport-asset"
-        src="models/AirportScreen/scene.gltf"
+        id="airportGold-asset"
+        src="models/AirportScreen/Gold/scene.gltf"
       ></a-asset-item>
         <a-asset-item
-        id="office-asset"
-        src="models/OfficeSign/scene.gltf"
+        id="airportSilver-asset"
+        src="models/AirportScreen/Silver/scene.gltf"
       ></a-asset-item>
       </a-assets>
 
-      <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
-        <a-entity
-          gesture-handler="minScale: 0.25; maxScale: 0.6"
-          class="Model"
-        />
-      </a-marker>
-
-      <a-marker type="barcode" value="6">
-        <a-entity
-          scale="0.002 0.002 0.002"
-          gltf-model="#vase-asset"
-          class="Model"
-        />
-      </a-marker>
+      <a-assets class="homeAssets">
+      <a-asset-item
+        id="vase-asset"
+        src="models/Vase/scene.gltf"
+      ></a-asset-item>
+      </a-assets>
       <a-marker type="barcode" value="5">
-         <a-entity
-          scale="0.002 0.002 0.002"
-          gltf-model="#plate-asset"
+        <a-entity
+          scale="0.08 0.08 0.08"
           class="Model"
         />
-      </a-marker>
+        </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
     <div class="container footer-container">
@@ -120,31 +103,24 @@
          <i class="fa fa-chevron-left backBtn"></i> 
         <img class="footer-image menuImg" src="/images/defaultpanel.png" />
         <img class="footer-image menuImg" src="/images/defaultLiftbtn-transformed.png" />
-        <img class="footer-image menuImg" src="/images/plateimg.png" />
         <img class="footer-image menuImg" src="/images/vaseimg.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
+        <img class="footer-image menuImg signModel" src="/images/skyltsilver.png" />
         <div id="modelColor0" class="modelColor">
-          <img class="footer-image models" src="/images/defaultpanel.png" />
-          <img class="footer-image models" src="/images/copperpanel.png" />
-          <img class="footer-image models" src="/images/goldenpanel.png" />
+          <img class="models" src="/images/defaultpanel.png" />
+          <img class="models" src="/images/goldenpanel.png" />
+          <img class="models" src="/images/copperpanel.png" />
         </div>
         <div id="modelColor1" class="modelColor">
-          <img class="footer-image models" src="/images/defaultLiftbtn-transformed.png" />
-          <img class="footer-image models" src="/images/copperLiftBtn-transformed.png" />
-          <img class="footer-image models" src="/images/goldbtnmodell-transformed.png" />
+          <img class="models" src="/images/defaultLiftbtn-transformed.png" />
+          <img class="models" src="/images/copperLiftBtn-transformed.png" />
+          <img class="models" src="/images/goldbtnmodell-transformed.png" />
         </div>
         <div id="modelColor2" class="modelColor">
-          <img class="footer-image models" src="/images/plateimg.png" />
+          <img class="models" src="/images/vaseimg.png" />
         </div>
         <div id="modelColor3" class="modelColor">
-          <img class="footer-image models" src="/images/vaseimg.png" />
-        </div>
-        <div id="modelColor4" class="modelColor">
-          <img class="footer-image models" src="/images/defaultpanel.png" />
-        </div>
-        <div id="modelColor5" class="modelColor">
-          <img class="footer-image models" src="/images/defaultpanel.png" />
+          <img class="models signModel" src="/images/skyltguld.png" />
+          <img class="models signModel" src="/images/skyltsilver.png" />
         </div>
       </div>
     </div>
