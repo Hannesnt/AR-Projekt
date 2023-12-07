@@ -27,7 +27,6 @@
     />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
-
   <body style="margin: 0px; overflow: hidden">
     <div id="loading-overlay" class="loading-overlay">
       <img
@@ -83,6 +82,14 @@
           id="vase-asset"
           src="models/Vase/Vase.obj.gltf"
         ></a-asset-item>
+        <a-asset-item
+        id="airport-asset"
+        src="models/AirportScreen/scene.gltf"
+      ></a-asset-item>
+        <a-asset-item
+        id="office-asset"
+        src="models/OfficeSign/scene.gltf"
+      ></a-asset-item>
       </a-assets>
 
       <a-marker type="pattern" preset="custom" url="marker/pattern-marker.patt">
@@ -94,15 +101,15 @@
 
       <a-marker type="barcode" value="6">
         <a-entity
-          scale="0.05 0.05 0.05"
-          gltf-model="#plate-asset"
+          scale="0.002 0.002 0.002"
+          gltf-model="#vase-asset"
           class="Model"
         />
       </a-marker>
       <a-marker type="barcode" value="5">
-        <a-entity
-          scale="0.001 0.001 0.001"
-          gltf-model="#vase-asset"
+         <a-entity
+          scale="0.002 0.002 0.002"
+          gltf-model="#plate-asset"
           class="Model"
         />
       </a-marker>
@@ -110,16 +117,35 @@
     </a-scene>
     <div class="container footer-container">
       <div class="footer">
-        <!-- <i class="fa fa-chevron-left backBtn"></i> -->
-
+         <i class="fa fa-chevron-left backBtn"></i> 
+        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
+        <img class="footer-image menuImg" src="/images/defaultLiftbtn-transformed.png" />
+        <img class="footer-image menuImg" src="/images/plateimg.png" />
+        <img class="footer-image menuImg" src="/images/vaseimg.png" />
         <img class="footer-image menuImg" src="/images/defaultpanel.png" />
         <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
-        <img class="footer-image menuImg" src="/images/defaultpanel.png" />
+        <div id="modelColor0" class="modelColor">
+          <img class="footer-image models" src="/images/defaultpanel.png" />
+          <img class="footer-image models" src="/images/copperpanel.png" />
+          <img class="footer-image models" src="/images/goldenpanel.png" />
+        </div>
+        <div id="modelColor1" class="modelColor">
+          <img class="footer-image models" src="/images/defaultLiftbtn-transformed.png" />
+          <img class="footer-image models" src="/images/copperLiftBtn-transformed.png" />
+          <img class="footer-image models" src="/images/goldbtnmodell-transformed.png" />
+        </div>
+        <div id="modelColor2" class="modelColor">
+          <img class="footer-image models" src="/images/plateimg.png" />
+        </div>
+        <div id="modelColor3" class="modelColor">
+          <img class="footer-image models" src="/images/vaseimg.png" />
+        </div>
+        <div id="modelColor4" class="modelColor">
+          <img class="footer-image models" src="/images/defaultpanel.png" />
+        </div>
+        <div id="modelColor5" class="modelColor">
+          <img class="footer-image models" src="/images/defaultpanel.png" />
+        </div>
       </div>
     </div>
     <script src="./js/switchModel.js"></script>
