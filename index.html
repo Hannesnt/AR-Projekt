@@ -1,14 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR.js Project</title>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-</head>
-<body>
-        <p>Ar-projekt</p>
-</body>
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/88572fa71b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <div id="loading-overlay" class="loading-overlay">
+      <img
+        class="loading-logo"
+        id="loading-logo"
+        src="images/logo.png"
+        alt="VS-Logo"
+      />
+      <div class="lds-ring" id="loading-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+      gesture-detector
+      renderer=" highRefreshRate: true; logarithmicDepthBuffer: true;"
+    >
+      <a-assets class="panelAssets">
+        <a-asset-item
+          id="defaultpanel-asset"
+          src="models/ElevatorPanel/DefaultPanel/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="goldenpanel-asset"
+          src="models/ElevatorPanel/GoldenPanel/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="copperpanel-asset"
+          src="models/ElevatorPanel/CopperPanel/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="liftBtnModel-asset"
+          src="models/LiftPanel/liftBtnModel/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="liftBtnModelCopper-asset"
+          src="models/LiftPanel/liftBtnModelCopper/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="liftBtnModelGold-asset"
+          src="models/LiftPanel/liftBtnModelGold/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+        id="airportGold-asset"
+        src="models/AirportScreen/Gold/scene.gltf"
+      ></a-asset-item>
+        <a-asset-item
+        id="airportSilver-asset"
+        src="models/AirportScreen/Silver/scene.gltf"
+      ></a-asset-item>
+      </a-assets>
+
+      <a-assets class="homeAssets">
+      <a-asset-item
+        id="vase-asset"
+        src="models/Vase/scene.gltf"
+      ></a-asset-item>
+      </a-assets>
+      <a-marker type="barcode" value="5">
+        <a-entity
+          class="Model"
+        />
+        </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <div class="container footer-container">
+      <div class="footer">
+         <i class="fa fa-chevron-left backBtn"></i> 
+        <img class="footer-image menuImg" src="images/defaultpanel.png" />
+        <img class="footer-image menuImg" src="images/defaultLiftbtn-transformed.png" />
+        <img class="footer-image menuImg" src="images/vaseimg.png" />
+        <img class="footer-image menuImg signModel" src="images/skyltsilver.png" />
+        <div id="modelColor0" class="modelColor">
+          <img class="models" src="images/defaultpanel.png" />
+          <img class="models" src="images/goldenpanel.png" />
+          <img class="models" src="images/copperpanel.png" />
+        </div>
+        <div id="modelColor1" class="modelColor">
+          <img class="models" src="images/defaultLiftbtn-transformed.png" />
+          <img class="models" src="images/copperLiftBtn-transformed.png" />
+          <img class="models" src="images/goldbtnmodell-transformed.png" />
+        </div>
+        <div id="modelColor2" class="modelColor">
+          <img class="models" src="images/vaseimg.png" />
+        </div>
+        <div id="modelColor3" class="modelColor">
+          <img class="models signModel" src="images/skyltguld.png" />
+          <img class="models signModel" src="images/skyltsilver.png" />
+        </div>
+      </div>
+    </div>
+    <script src="js/switchModel.js"></script>
+  </body>
 </html>
