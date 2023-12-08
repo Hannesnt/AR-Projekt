@@ -11,9 +11,9 @@ const modelArray = [
 ];
 
 const modelConfig = {
-  "#defaultpanel-asset":{scale: "0.8 0.8 0.8", position: "0 0 0", rotation: "90 0 0"},
-  "#goldenpanel-asset":{scale: "0.8 0.8 0.8", position: "0 0 0", rotation: "90 0 0"},
-  "#copperpanel-asset":{scale: "0.8 0.8 0.8", position: "0 0 0", rotation: "90 0 0"},
+  "#defaultpanel-asset":{scale: "0.8 1 1.2", position: "0 0 0", rotation: "90 0 0"},
+  "#goldenpanel-asset":{scale: "0.8 1 1.2", position: "0 0 0", rotation: "90 0 0"},
+  "#copperpanel-asset":{scale: "0.8 1 1.2", position: "0 0 0", rotation: "90 0 0"},
   "#liftBtnModel-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
   "#liftBtnModelCopper-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
   "#liftBtnModelGold-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
@@ -24,12 +24,14 @@ const modelConfig = {
 
 //Functions
 
+
+
 function switchModel(model) {
   models.removeAttribute("gltf-model");
   models.removeAttribute("scale");
   models.removeAttribute("position");
   models.removeAttribute("rotation");
-  models.removeAttribute("gesture-handler");
+  //models.removeAttribute("gesture-handler");
   models.setAttribute("gltf-model", model);
 
   const config = modelConfig[model];
@@ -89,5 +91,68 @@ for(let i = 0; i < modelPicker.length; i++){
   })
 }
 
+//Gesture Handlers component, tog bort ena axeln ifrån rotationen: https://github.com/fcor/arjs-gestures/blob/master/gesture-handler.js
+AFRAME.registerComponent("gesture-handlerr", {
+  schema: {
+    enabled: { default: true },
+    rotationFactor: { default: 3 },
+    minScale: { default: 0.3 },
+    maxScale: { default: 8 },
+  },
+
+  init: function () {
+    this.handleScale = this.handleScale.bind(this);
+    this.handleRotation = this.handleRotation.bind(this);
+
+    this.isVisible = false;
+    this.initialScale = this.el.object3D.scale.clone();
+    this.scaleFactor = 1;
+
+    this.el.sceneEl.addEventListener("markerFound", (e) => {
+      this.isVisible = true;
+    });
+
+    this.el.sceneEl.addEventListener("markerLost", (e) => {
+      this.isVisible = false;
+    });
+  },
+
+  update: function () {
+    if (this.data.enabled) {
+      this.el.sceneEl.addEventListener("onefingermove", this.handleRotation);
+      this.el.sceneEl.addEventListener("twofingermove", this.handleScale);
+    } else {
+      this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
+      this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
+    }
+  },
+
+  remove: function () {
+    this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
+    this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
+  },
+
+  handleRotation: function (event) {
+  if (this.isVisible) {
+    this.el.object3D.rotation.y +=
+      event.detail.positionChange.x * this.data.rotationFactor;
+  }
+},
 
 
+  handleScale: function (event) {
+    if (this.isVisible) {
+      this.scaleFactor *=
+        1 + event.detail.spreadChange / event.detail.startSpread;
+
+      this.scaleFactor = Math.min(
+        Math.max(this.scaleFactor, this.data.minScale),
+        this.data.maxScale
+      );
+
+      this.el.object3D.scale.x = this.scaleFactor * this.initialScale.x;
+      this.el.object3D.scale.y = this.scaleFactor * this.initialScale.y;
+      this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
+    }
+  },
+});
