@@ -16,7 +16,6 @@
   z-index: 9999;
 }
 
-
 .arjs-loader div {
   text-align: center;
   font-size: 1.25em;
@@ -85,6 +84,7 @@
   height: 20vh;
   display: flex;
   align-items: center;
+  margin: auto;
 }
 
 .footer-image {
@@ -92,14 +92,18 @@
   width: 7vw;
   border-radius: 10px;
   margin: 0 10vw;
+  border: 0.5px solid gray;
+  box-shadow: gray 0 0 5px;
 }
-.models{
+.models {
   height: 10vh;
   width: 7vw;
   border-radius: 10px;
   margin: 0 7vw;
+  border: 0.5px solid gray;
+  box-shadow: gray 0 0 5px;
 }
-.signModel{
+.signModel {
   width: 25%;
   height: 7vh;
 }
@@ -123,6 +127,7 @@
   display: none;
   margin-right: 4vw;
 }
-.modelColor{
+.modelColor {
   display: none;
+  margin: auto;
 }
