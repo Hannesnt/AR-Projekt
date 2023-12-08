@@ -6,7 +6,6 @@
       content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
@@ -82,17 +81,30 @@
         id="airportSilver-asset"
         src="models/AirportScreen/Silver/scene.gltf"
       ></a-asset-item>
-      </a-assets>
-
-      <a-assets class="homeAssets">
-      <a-asset-item
+        <a-asset-item
         id="vase-asset"
         src="models/Vase/scene.gltf"
       ></a-asset-item>
       </a-assets>
-      <a-marker type="barcode" value="5">
+
+      <a-marker type="barcode" value="6">
         <a-entity
           class="Model"
+          class="clickable"
+        />
+        </a-marker>
+        <a-marker type="barcode" value="7">
+          <a-entity
+          gltf-model="#vase-asset"
+          gesture-handlerr="minScale:0.5; maxScale:1"
+          scale="0.002 0.002 0.002"
+        />
+        </a-marker>
+        <a-marker type="barcode" value="9">
+          <a-entity
+          gltf-model="#airportSilver-asset"
+          gesture-handlerr="minScale:1; maxScale:1"
+          scale="0.03 0.03 0.03"
         />
         </a-marker>
       <a-entity camera></a-entity>
