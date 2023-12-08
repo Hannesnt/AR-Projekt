@@ -18,8 +18,8 @@ const modelConfig = {
   "#liftBtnModelCopper-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
   "#liftBtnModelGold-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
   "#vase-asset": { scale: "0.002 0.002 0.002" },
-  "#airportGold-asset": { scale: "0.03 0.03 0.03", rotation: "-2 0 0", name: "#airportGold-asset" },
-  "#airportSilver-asset": { scale: "0.03 0.03 0.03", rotation: "0 0 0", position: "0 0 0", name: "#airportSilver-asset" },
+  "#airportGold-asset": { scale: "0.03 0.03 0.03", rotation: "-2 0 0" },
+  "#airportSilver-asset": { scale: "0.03 0.03 0.03", rotation: "0 0 0", position: "0 0 0"},
 }
 
 //Functions
