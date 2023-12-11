@@ -17,7 +17,7 @@ const modelConfig = {
   "#liftBtnModel-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
   "#liftBtnModelCopper-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
   "#liftBtnModelGold-asset":{ scale: "0.2 0.2 0.2", position: "0 0 0", rotation: "0 0 0" },
-  "#vase-asset": { scale: "0.002 0.002 0.002" },
+  "#vase-asset": { scale: "0.015 0.015 0.015" },
   "#airportGold-asset": { scale: "0.03 0.03 0.03", rotation: "-2 0 0" },
   "#airportSilver-asset": { scale: "0.03 0.03 0.03", rotation: "0 0 0", position: "0 0 0"},
 }
@@ -31,7 +31,6 @@ function switchModel(model) {
   models.removeAttribute("scale");
   models.removeAttribute("position");
   models.removeAttribute("rotation");
-  //models.removeAttribute("gesture-handler");
   models.setAttribute("gltf-model", model);
 
   const config = modelConfig[model];
